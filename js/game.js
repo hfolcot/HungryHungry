@@ -14,6 +14,7 @@ class Game {
         this.numberOfFood = 15;
         this.state = 0;
         this.points = 0;
+        this.level = 1;
         new InputHandler(this);
     }
     init() {
@@ -22,6 +23,9 @@ class Game {
         this.keys = [];
         for(let i=0; i<this.numberOfFood; i++){
             this.foodArr.unshift(new Food(this));
+        }
+        if(this.level === 1){
+            this.points = 0;
         }
     }
     update(ctx) {

@@ -5,7 +5,7 @@ class Food {
         this.y = Math.random() * game.canvas.height;
         this.width = Math.random() * game.canvas.width / 6;
         this.height = this.width / 2;
-        this.speed = Math.random() > 0.5 ? (Math.random() * 3) : (Math.random() * -3); //Random speed between -3 (left) and +3 (right)
+        this.speed = (Math.random() > 0.5 ? (Math.random() * 1) : (Math.random() * -1)) * game.level; //Random speed between -1 (left) and +1 (right)
     }
     update(game) {
         if (this.direction == 'h') {

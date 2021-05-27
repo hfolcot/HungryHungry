@@ -44,6 +44,20 @@ class Player {
             this.ySpeed = this.ySpeed < 0 ? this.ySpeed + 0.1 : this.ySpeed -0.1;
         }
 
+        // Check player is still in play area
+        if(this.x > game.canvas.width){
+            this.x = 0 - this.width;
+        }
+        if(this.x + this.width < 0) {
+            this.x = game.canvas.width;
+        }
+        if(this.y+this.height < 0) {
+            this.y = game.canvas.height;
+        }
+        if(this.y > game.canvas.height){
+            this.y = 0 - this.height;
+        }
+
         // Move
         this.x += this.xSpeed;
         this.y += this.ySpeed;
@@ -53,7 +67,7 @@ class Player {
             if(detectCollision(this, game.foodArr[i])) {
                 if(this.width > game.foodArr[i].width) {
                     game.foodArr[i].reset(game);
-                    game.points += game.foodArr[i].width;
+                    game.points += Math.ceil(game.foodArr[i].width);
                     this.width+=5;
                     this.height+=5;
                 } else {
@@ -64,7 +78,10 @@ class Player {
             }
         }
 
-        //TODO: Check for win state
+        if(this.width > game.canvas.width / 5){
+            game.level++;
+            game.init();
+        }
 
     }
     draw(ctx) {
