@@ -5,7 +5,7 @@ class Food {
         this.y = Math.random() * game.canvas.height;
         this.width = Math.random() * game.canvas.width / 6;
         this.height = this.width / 2;
-        this.speed = (Math.random() > 0.5 ? (Math.random() * 1) : (Math.random() * -1)) * game.level; //Random speed between -1 (left) and +1 (right)
+        this.speed = (Math.random() > 0.5 ? (Math.random() * game.level) : (Math.random() * -game.level)); //Random speed between -x (left) and +x (right)
     }
     update(game) {
         if (this.direction == 'h') {
@@ -21,7 +21,8 @@ class Food {
         if (this.x + this.width < 0 || // Food has passed left edge of canvas
             this.x > game.canvas.width || // Food has passed right edge of canvas
             this.y > game.canvas.height || // Food has passed bottom edge of canvas
-            this.y + this.height < 0) // Food has passed top edge of canvas
+            this.y + this.height < 0 ||  // Food has passed top edge of canvas
+            (this.speed > -0.1 && this.speed < 0.1)) // Food hardly moving
         {
             this.reset(game);
         }

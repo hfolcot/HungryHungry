@@ -1,8 +1,8 @@
 class Player {
     constructor(canvas) {
-        this.height = 10;
         this.width = 10;
-        this.x = 0;
+        this.height = this.width/2;
+        this.x = canvas.width / 2 - this.width / 2;
         this.y = canvas.height / 2 - this.height / 2;
         this.color = '#bada55';
         this.minSpeed = 0;
@@ -69,7 +69,7 @@ class Player {
                     game.foodArr[i].reset(game);
                     game.points += Math.ceil(game.foodArr[i].width);
                     this.width+=5;
-                    this.height+=5;
+                    this.height = this.width / 2;
                 } else {
                     // Game over
                     game.state = 3;
