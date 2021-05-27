@@ -19,7 +19,7 @@ class Player {
                 this.xSpeed += 0.1;
             }
         } else {
-            if(this.xSpeed > this.minSpeed && ! game.keys['ArrowLeft']) {
+            if (this.xSpeed > this.minSpeed && !game.keys['ArrowLeft']) {
                 this.xSpeed -= 0.1;
             }
         }
@@ -28,7 +28,7 @@ class Player {
                 this.xSpeed -= 0.1;
             }
         } else {
-            if(this.xSpeed < this.minSpeed && ! game.keys['ArrowRight']) {
+            if (this.xSpeed < this.minSpeed && !game.keys['ArrowRight']) {
                 this.xSpeed += 0.1;
             }
         }
@@ -37,7 +37,7 @@ class Player {
                 this.ySpeed += 0.1;
             }
         } else {
-            if(this.ySpeed > this.minSpeed && ! game.keys['ArrowUp']) {
+            if (this.ySpeed > this.minSpeed && !game.keys['ArrowUp']) {
                 this.ySpeed -= 0.1;
             }
         }
@@ -46,7 +46,7 @@ class Player {
                 this.ySpeed -= 0.1;
             }
         } else {
-            if(this.ySpeed < this.minSpeed && ! game.keys['ArrowDown']) {
+            if (this.ySpeed < this.minSpeed && !game.keys['ArrowDown']) {
                 this.ySpeed += 0.1;
             }
         }
