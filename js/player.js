@@ -47,6 +47,25 @@ class Player {
         // Move
         this.x += this.xSpeed;
         this.y += this.ySpeed;
+
+        // Check for collision with food
+        for(let i = 0; i<game.foodArr.length; i++){
+            if(detectCollision(this, game.foodArr[i])) {
+                if(this.width > game.foodArr[i].width) {
+                    game.foodArr[i].reset(game);
+                    game.points += game.foodArr[i].width;
+                    this.width+=5;
+                    this.height+=5;
+                } else {
+                    // Game over
+                    game.state = 3;
+                }
+                
+            }
+        }
+
+        //TODO: Check for win state
+
     }
     draw(ctx) {
         ctx.fillStyle = this.color;

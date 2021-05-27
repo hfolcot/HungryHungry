@@ -1,3 +1,10 @@
+// Game States
+// 0: Start
+// 1: Play
+// 2: Pause
+// 3: End
+
+
 class Game {
     constructor(canvas) {
         this.player;
@@ -5,6 +12,8 @@ class Game {
         this.keys = [];
         this.canvas = canvas;
         this.numberOfFood = 15;
+        this.state = 0;
+        this.points = 0;
         new InputHandler(this);
     }
     init() {
