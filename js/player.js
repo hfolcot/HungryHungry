@@ -1,7 +1,7 @@
 class Player {
     constructor(canvas) {
-        this.width = 10;
-        this.height = this.width/2;
+        this.width = 50;
+        this.height = this.width / 2;
         this.x = canvas.width / 2 - this.width / 2;
         this.y = canvas.height / 2 - this.height / 2;
         this.color = '#bada55';
@@ -10,51 +10,63 @@ class Player {
         this.ySpeed = 0;
         this.maxSpeed = 5;
         this.move = false;
+        this.idle = true;
+        this.spriteSheet = this.idle ? loadImage('img/fishIdleRight.png') : loadImage('img/fishSwimRight.png');
+        this.frameX = 0;
+        this.frameY = 0;
+        this.frameWidth = 418;
+        this.frameHeight = 397;
+        this.maxFrameX = 3;
+        this.maxFrameY = 4;
         this.canvas = canvas;
     }
 
     update(game) {
         // Speed up with momentum
         if (game.keys['ArrowRight']) {
+            this.idle = false;
             if (this.xSpeed < this.maxSpeed) {
                 this.xSpeed += 0.1;
             }
         }
         if (game.keys['ArrowLeft']) {
+            this.idle = false;
             if (this.xSpeed > -this.maxSpeed) {
                 this.xSpeed -= 0.1;
             }
         }
         if (game.keys['ArrowDown']) {
+            this.idle = false;
             if (this.ySpeed < this.maxSpeed) {
                 this.ySpeed += 0.1;
             }
         }
         if (game.keys['ArrowUp']) {
+            this.idle = false;
             if (this.ySpeed > -this.maxSpeed) {
                 this.ySpeed -= 0.1;
             }
         }
 
         // Slow down with momentum
-        if(!game.keys['ArrowRight'] && !game.keys['ArrowLeft'] && this.xSpeed !== 0) {
-            this.xSpeed = this.xSpeed < 0 ? this.xSpeed + 0.1 : this.xSpeed -0.1;
+        if (!game.keys['ArrowRight'] && !game.keys['ArrowLeft'] && this.xSpeed !== 0) {
+            this.xSpeed = this.xSpeed < 0 ? this.xSpeed + 0.1 : this.xSpeed - 0.1;
         }
-        if(!game.keys['ArrowUp'] && !game.keys['ArrowDown'] && this.ySpeed !== 0) {
-            this.ySpeed = this.ySpeed < 0 ? this.ySpeed + 0.1 : this.ySpeed -0.1;
+        if (!game.keys['ArrowUp'] && !game.keys['ArrowDown'] && this.ySpeed !== 0) {
+            this.ySpeed = this.ySpeed < 0 ? this.ySpeed + 0.1 : this.ySpeed - 0.1;
         }
 
         // Check player is still in play area
-        if(this.x > game.canvas.width){
+        if (this.x > game.canvas.width) {
             this.x = 0 - this.width;
         }
-        if(this.x + this.width < 0) {
+        if (this.x + this.width < 0) {
             this.x = game.canvas.width;
         }
-        if(this.y+this.height < 0) {
+        if (this.y + this.height < 0) {
             this.y = game.canvas.height;
         }
-        if(this.y > game.canvas.height){
+        if (this.y > game.canvas.height) {
             this.y = 0 - this.height;
         }
 
@@ -63,22 +75,22 @@ class Player {
         this.y += this.ySpeed;
 
         // Check for collision with food
-        for(let i = 0; i<game.foodArr.length; i++){
-            if(detectCollision(this, game.foodArr[i])) {
-                if(this.width > game.foodArr[i].width) {
+        for (let i = 0; i < game.foodArr.length; i++) {
+            if (detectCollision(this, game.foodArr[i])) {
+                if (this.width > game.foodArr[i].width) {
                     game.foodArr[i].reset(game);
                     game.points += Math.ceil(game.foodArr[i].width);
-                    this.width+=5;
+                    this.width += 5;
                     this.height = this.width / 2;
                 } else {
                     // Game over
                     game.state = 3;
                 }
-                
+
             }
         }
 
-        if(this.width > game.canvas.width / 5){
+        if (this.width > game.canvas.width / 5) {
             game.level++;
             game.init();
         }
@@ -87,5 +99,6 @@ class Player {
     draw(ctx) {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.spriteSheet, 0, 0, this.frameWidth * this.frameX, this.frameHeight * this.frameY, this.x, this.y, this.width, this.height);
     }
 }
