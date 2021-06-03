@@ -1,36 +1,31 @@
 class Player {
     constructor(canvas) {
-        this.width = 50;
-        this.height = this.width / 2;
-        this.x = canvas.width / 2 - this.width / 2;
-        this.y = canvas.height / 2 - this.height / 2;
+        this.size = 20;
+        this.x = canvas.width / 2 - this.size / 2;
+        this.y = canvas.height / 2 - this.size / 2;
         this.color = '#bada55';
         this.minSpeed = 0;
         this.xSpeed = 0;
         this.ySpeed = 0;
         this.maxSpeed = 5;
-        this.move = false;
         this.idle = true;
-        this.spriteSheet = this.idle ? loadImage('img/fishIdleRight.png') : loadImage('img/fishSwimRight.png');
-        this.frameX = 0;
-        this.frameY = 0;
-        this.frameWidth = 418;
-        this.frameHeight = 397;
-        this.maxFrameX = 3;
-        this.maxFrameY = 4;
+        this.swimSpriteRight = new FishSprite('img/fishSwimRight.png', 3, 2);
+        this.swimSpriteLeft = new FishSprite('img/fishSwimLeft.png', 3, 2);
+        this.currentSprite = this.swimSpriteRight;
         this.canvas = canvas;
     }
 
     update(game) {
+
         // Speed up with momentum
         if (game.keys['ArrowRight']) {
-            this.idle = false;
+            this.currentSprite = this.swimSpriteRight;
             if (this.xSpeed < this.maxSpeed) {
                 this.xSpeed += 0.1;
             }
         }
         if (game.keys['ArrowLeft']) {
-            this.idle = false;
+            this.currentSprite = this.swimSpriteLeft;
             if (this.xSpeed > -this.maxSpeed) {
                 this.xSpeed -= 0.1;
             }
@@ -58,30 +53,33 @@ class Player {
 
         // Check player is still in play area
         if (this.x > game.canvas.width) {
-            this.x = 0 - this.width;
+            this.x = 0 - this.size;
         }
-        if (this.x + this.width < 0) {
+        if (this.x + this.size < 0) {
             this.x = game.canvas.width;
         }
-        if (this.y + this.height < 0) {
+        if (this.y + this.size < 0) {
             this.y = game.canvas.height;
         }
         if (this.y > game.canvas.height) {
-            this.y = 0 - this.height;
+            this.y = 0 - this.size;
         }
 
         // Move
         this.x += this.xSpeed;
         this.y += this.ySpeed;
 
+        if (!this.idle) {
+            this.currentSprite.animate();
+        }
+
         // Check for collision with food
         for (let i = 0; i < game.foodArr.length; i++) {
             if (detectCollision(this, game.foodArr[i])) {
-                if (this.width > game.foodArr[i].width) {
+                if (this.size > game.foodArr[i].size) {
                     game.foodArr[i].reset(game);
-                    game.points += Math.ceil(game.foodArr[i].width);
-                    this.width += 5;
-                    this.height = this.width / 2;
+                    game.points += Math.ceil(game.foodArr[i].size);
+                    this.size += 5;
                 } else {
                     // Game over
                     game.state = 3;
@@ -90,7 +88,7 @@ class Player {
             }
         }
 
-        if (this.width > game.canvas.width / 5) {
+        if (this.size > game.canvas.width / 5) {
             game.level++;
             game.init();
         }
@@ -98,7 +96,8 @@ class Player {
     }
     draw(ctx) {
         ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.drawImage(this.spriteSheet, 0, 0, this.frameWidth * this.frameX, this.frameHeight * this.frameY, this.x, this.y, this.width, this.height);
+        //ctx.fillRect(this.x, this.y, this.size, this.size);
+
+        this.currentSprite.draw(this.x, this.y, this.size, this.size);
     }
 }
