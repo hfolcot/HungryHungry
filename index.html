@@ -5,27 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
     <title>Hungry Hungry</title>
 </head>
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-
-    #canvas {
-        border: 1px solid black;
-        background: linear-gradient(lightblue, #2d2d85);
-        width: 800px;
-        height: 600px;
-    }
-</style>
 
 <body>
-    <canvas id="canvas"></canvas>
+    <!-- Modal -->
+    <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="instructionsModalLabel">Instructions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    Vinnie is a very hungry fish. Help him eat as much food as he can to grow big and strong, but
+                    beware! Food bigger than Vinnie will knock him out, so he should only eat what is smaller than him!
+                    <br /><br />
+                    Use the arrow keys to move.<br />
+                    Press P to pause the game.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+    <div class="info">
+        <div><span>Score: </span><span id="score"></span></div>
+        <div class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#instructionsModal">Instructions</div>
+        <div><span>Level: </span><span id="level"></span></div>
 
+    </div>
+    <canvas id="canvas"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
     <script src='js/loaders.js'></script>
     <script src='js/sprites.js'></script>
     <script src='js/input.js'></script>

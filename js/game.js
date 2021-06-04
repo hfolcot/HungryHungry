@@ -55,12 +55,13 @@ class Game {
     }
 
     update(ctx) {
-
+        document.getElementById('score').innerHTML = this.points;
+        document.getElementById('level').innerHTML = this.level;
         if (this.state === 0) {
             // Start Screen
             ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            let startMessage = new Message(canvas.width / 2, canvas.height / 2, 'bold 25px Arial', "Press space to start!", "white");
+            let startMessage = new Message(canvas.width / 2, canvas.height / 2, 'bold 25px "Staatliches"', "Press space to start!", "white");
             startMessage.draw(ctx);
         }
         if (this.state === 1) {
@@ -80,18 +81,18 @@ class Game {
             // Pause Screen
             ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            let startMessage = new Message(canvas.width / 2, canvas.height / 2, 'bold 25px Arial', "Paused", "white");
+            let startMessage = new Message(canvas.width / 2, canvas.height / 2, 'bold 25px "Staatliches"', "Paused", "white");
             startMessage.draw(ctx);
         }
         if (this.state === 3) {
             // Game Over
             ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            let gameOverMessage = new Message(canvas.width / 2, canvas.height / 2, 'bold 25px Arial', "You were knocked out!", "white");
+            let gameOverMessage = new Message(canvas.width / 2, canvas.height / 2, 'bold 25px "Staatliches"', "You were knocked out!", "white");
             gameOverMessage.draw(ctx);
-            let scoreText = new Message(canvas.width / 2, canvas.height / 2 + 30, 'bold 18px Arial', "Your Score: " + this.points, "white");
+            let scoreText = new Message(canvas.width / 2, canvas.height / 2 + 30, 'bold 18px "Staatliches"', "Your Score: " + this.points, "white");
             scoreText.draw(ctx);
-            let restartText = new Message(canvas.width / 2, canvas.height / 2 + 60, 'bold 18px Arial', "Press space to restart", "white");
+            let restartText = new Message(canvas.width / 2, canvas.height / 2 + 60, 'bold 18px "Staatliches"', "Press space to restart", "white");
             restartText.draw(ctx);
         }
         if (this.state === 4) {
@@ -103,11 +104,11 @@ class Game {
             // Pause between levels
             ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            let gameOverMessage = new Message(canvas.width / 2, canvas.height / 2, 'bold 25px Arial', "Level " + this.level + " Passed!", "white");
+            let gameOverMessage = new Message(canvas.width / 2, canvas.height / 2, 'bold 25px "Staatliches"', "Level " + this.level + " Passed!", "white");
             gameOverMessage.draw(ctx);
-            let scoreText = new Message(canvas.width / 2, canvas.height / 2 + 30, 'bold 18px Arial', "Your Score: " + this.points, "white");
+            let scoreText = new Message(canvas.width / 2, canvas.height / 2 + 30, 'bold 18px "Staatliches"', "Your Score: " + this.points, "white");
             scoreText.draw(ctx);
-            let restartText = new Message(canvas.width / 2, canvas.height / 2 + 60, 'bold 18px Arial', "New level in " + this.newLevelTimer, "white");
+            let restartText = new Message(canvas.width / 2, canvas.height / 2 + 60, 'bold 18px "Staatliches"', "New level in " + this.newLevelTimer, "white");
             restartText.draw(ctx);
         }
     }

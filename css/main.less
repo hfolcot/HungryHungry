@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+body {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    flex-direction : column;
+    height         : 100vh;
+    font-family    : 'Staatliches', sans-serif;
+
+    .modal-body {
+        font-family: Helvetica, sans-serif;
+    }
+
+    .info {
+        display        : flex;
+        justify-content: space-between;
+        align-items    : center;
+        font-size      : 2rem;
+        font-weight    : bold;
+        width          : 800px;
+        text-transform : uppercase;
+        padding        : 1rem 0;
+        border         : 1px solid black;
+        border-bottom  : none;
+
+        div {
+
+            padding: 0 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem;
+        }
+    }
+
+    #canvas {
+        border    : 1px solid black;
+        background: linear-gradient(lightblue, #2d2d85);
+        width     : 800px;
+        height    : 600px;
+    }
+}

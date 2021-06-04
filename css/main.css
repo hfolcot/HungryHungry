@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Staatliches';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/staatliches/v6/HI_OiY8KO6hCsQSoAPmtMbec.ttf) format('truetype');
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Staatliches', sans-serif;
+}
+body .modal-body {
+  font-family: Helvetica, sans-serif;
+}
+body .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 800px;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  border: 1px solid black;
+  border-bottom: none;
+}
+body .info div {
+  padding: 0 1rem;
+}
+body .info .btn {
+  padding: 0.5rem;
+}
+body #canvas {
+  border: 1px solid black;
+  background: linear-gradient(lightblue, #2d2d85);
+  width: 800px;
+  height: 600px;
+}
