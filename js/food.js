@@ -3,7 +3,7 @@ class Food {
         this.direction = Math.random() > 0.5 ? 'h' : 'v'; //Random horizontal or vertical direction
         this.x = Math.random() * game.canvas.width;
         this.y = Math.random() * game.canvas.height;
-        this.size = Math.random() * game.canvas.width / 8;
+        this.size = Math.random() * 10 //game.canvas.width / 8;
         this.speed = (Math.random() > 0.5 ? (Math.random() * game.level) : (Math.random() * -game.level)); //Random speed between -x (left) and +x (right)
         this.spriteSheet = loadImage(['img/flake_green.png', 'img/flake_orange.png', 'img/flake_purple.png', 'img/flake_red.png', 'img/flake_yellow.png'][Math.floor(Math.random() * 5)])
     }
@@ -40,7 +40,6 @@ class Food {
     }
     draw(ctx) {
         ctx.fillStyle = 'red';
-        //ctx.fillRect(this.x, this.y, this.width, this.height);
         ctx.drawImage(this.spriteSheet, this.x, this.y, this.size, this.size);
     }
 }

@@ -79,7 +79,7 @@ class Player {
                 if (this.size > game.foodArr[i].size) {
                     game.foodArr[i].reset(game);
                     game.points += Math.ceil(game.foodArr[i].size);
-                    this.size += 5;
+                    this.size += 2;
                 } else {
                     // Game over
                     game.state = 3;
@@ -89,8 +89,7 @@ class Player {
         }
 
         if (this.size > game.canvas.width / 5) {
-            game.level++;
-            game.init();
+            game.state = 4;
         }
 
     }
