@@ -75,17 +75,17 @@ class Player {
 
         // Check for collision with food
         for (let i = 0; i < game.foodArr.length; i++) {
-            // if (detectCollision(this, game.foodArr[i])) {
-            //     if (this.size > game.foodArr[i].size) {
-            //         game.foodArr[i].reset(game);
-            //         game.points += Math.ceil(game.foodArr[i].size);
-            //         this.size += 2;
-            //     } else {
-            //         // Game over
-            //         game.state = 3;
-            //     }
+            if (detectCollision(this, game.foodArr[i])) {
+                if (this.size > game.foodArr[i].size) {
+                    game.foodArr[i].reset(game);
+                    game.points += Math.ceil(game.foodArr[i].size);
+                    this.size += 2;
+                } else {
+                    // Game over
+                    game.state = 3;
+                }
 
-            // }
+            }
         }
 
         if (this.size > game.canvas.width / 5) {

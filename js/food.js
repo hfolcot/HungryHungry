@@ -4,8 +4,12 @@ class Food {
         this.x = Math.random() * game.canvas.width;
         this.y = Math.random() * game.canvas.height;
         this.size = Math.random() * 10 //game.canvas.width / 8;
-        this.speed = (Math.random() > 0.5 ? (Math.random() * game.level) : (Math.random() * -game.level)); //Random speed between -x (left) and +x (right)
-        this.spriteSheet = loadImage(['img/flake_green.png', 'img/flake_orange.png', 'img/flake_purple.png', 'img/flake_red.png', 'img/flake_yellow.png'][Math.floor(Math.random() * 5)])
+        this.speed = (Math.random() > 0.5 ? (Math.random() * game.speed) : (Math.random() * -game.speed)); //Random speed between -x (left) and +x (right)
+        this.spriteSheet = loadImage(['img/flake_green.png', 'img/flake_orange.png', 'img/flake_purple.png', 'img/flake_red.png', 'img/flake_yellow.png'][Math.floor(Math.random() * 5)]);
+        if (detectCollision(this, game.player)) {
+            this.x = Math.random() * game.canvas.width;
+            this.y = Math.random() * game.canvas.height;
+        }
     }
     update(game) {
         if (this.direction == 'h') {
@@ -39,7 +43,6 @@ class Food {
         }
     }
     draw(ctx) {
-        ctx.fillStyle = 'red';
         ctx.drawImage(this.spriteSheet, this.x, this.y, this.size, this.size);
     }
 }

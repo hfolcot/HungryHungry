@@ -18,6 +18,7 @@ class Game {
         this.state = 0;
         this.points = 0;
         this.level = 1;
+        this.speed = 0.5;
         this.frame = 0;
         this.newLevelTimer = 3;
         new InputHandler(this);
@@ -47,6 +48,7 @@ class Game {
                 game.state = 1;
                 game.newLevelTimer = 3;
                 game.level++;
+                game.speed += 0.1;
                 game.init();
             }
         }, 1000);
