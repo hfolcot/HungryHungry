@@ -10,9 +10,11 @@ class Game {
     constructor(canvas) {
         this.player;
         this.foodArr = [];
+        this.bubbleArr = [];
         this.keys = [];
         this.canvas = canvas;
         this.numberOfFood = 15;
+        this.numberOfBubbles = 3;
         this.state = 0;
         this.points = 0;
         this.level = 1;
@@ -23,9 +25,13 @@ class Game {
     init() {
         this.player = new Player(canvas);
         this.foodArr = [];
+        this.bubbleArr = [];
         this.keys = [];
         for (let i = 0; i < this.numberOfFood; i++) {
             this.foodArr.unshift(new Food(this));
+        }
+        for (let i = 0; i < this.numberOfBubbles; i++) {
+            this.bubbleArr.unshift(new Bubble());
         }
         if (this.level === 1) {
             this.points = 0;
@@ -62,6 +68,10 @@ class Game {
             for (let i = 0; i < this.foodArr.length; i++) {
                 this.foodArr[i].update(this);
                 this.foodArr[i].draw(ctx);
+            }
+            for (let i = 0; i < this.bubbleArr.length; i++) {
+                this.bubbleArr[i].update(this);
+                this.bubbleArr[i].draw(ctx);
             }
         }
         if (this.state === 2) {
