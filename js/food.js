@@ -3,7 +3,7 @@ class Food {
         this.direction = Math.random() > 0.5 ? 'h' : 'v'; //Random horizontal or vertical direction
         this.x = Math.random() * game.canvas.width;
         this.y = Math.random() * game.canvas.height;
-        this.size = Math.random() * (game.player.size * 2);
+        this.size = Math.random() * (game.characterMaxSize / 2);
         this.speed = (Math.random() > 0.5 ? (Math.random() * game.speed) : (Math.random() * -game.speed)); //Random speed between -x (left) and +x (right)
         this.spriteSheet = loadImage(['img/flake_green.png', 'img/flake_orange.png', 'img/flake_purple.png', 'img/flake_red.png', 'img/flake_yellow.png'][Math.floor(Math.random() * 5)]);
         if (detectCollision(this, game.player)) {
@@ -32,7 +32,7 @@ class Food {
         }
     }
     reset(game) {
-        this.size = Math.random() * (game.player.size * 2);
+        this.size = Math.random() * (game.characterMaxSize / 2);
         this.speed = Math.random() > 0.5 ? (Math.random() * 5) : (Math.random() * -5);
         if (this.direction == 'h') {
             this.y = Math.random() * game.canvas.height;

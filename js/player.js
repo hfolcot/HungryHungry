@@ -88,7 +88,7 @@ class Player {
             }
         }
 
-        if (this.size > game.canvas.width / 5) {
+        if (this.size > game.characterMaxSize) {
             game.state = 4;
         }
 

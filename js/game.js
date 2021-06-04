@@ -15,6 +15,7 @@ class Game {
         this.canvas = canvas;
         this.numberOfFood = 15;
         this.numberOfBubbles = 3;
+        this.characterMaxSize = canvas.width / 5;
         this.state = 0;
         this.points = 0;
         this.level = 1;
