@@ -12,6 +12,26 @@ body {
         font-family: Helvetica, sans-serif;
     }
 
+    .gameArea {
+        @media(max-width: 799px) {
+            display: none;
+        }
+
+        @media(hover: none) {
+            display: none;
+        }
+    }
+
+    .tooSmall {
+        @media(min-width: 800px) {
+            display: none;
+        }
+
+        @media(hover: none) {
+            display: block !important;
+        }
+    }
+
     .info {
         display        : flex;
         justify-content: space-between;

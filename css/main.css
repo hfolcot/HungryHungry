@@ -16,6 +16,26 @@ body {
 body .modal-body {
   font-family: Helvetica, sans-serif;
 }
+@media (max-width: 799px) {
+  body .gameArea {
+    display: none;
+  }
+}
+@media (hover: none) {
+  body .gameArea {
+    display: none;
+  }
+}
+@media (min-width: 800px) {
+  body .tooSmall {
+    display: none;
+  }
+}
+@media (hover: none) {
+  body .tooSmall {
+    display: block !important;
+  }
+}
 body .info {
   display: flex;
   justify-content: space-between;
