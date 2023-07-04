@@ -4,6 +4,4 @@ Gino is a very hungry fish. Help him eat as much food as he can to grow big and 
 
 Demo [here](https://hfolcot.github.io/HungryHungry/)
 
-Image Assets from https://www.gamedeveloperstudio.com/
-
-&copy; Heather Olcot 2021
+&copy; Heather Olcot 2023
