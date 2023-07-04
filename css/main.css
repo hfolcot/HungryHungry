@@ -47,11 +47,16 @@ body .info {
   padding: 1rem 0;
   border: 1px solid black;
   border-bottom: none;
+  position: relative;
 }
 body .info div {
   padding: 0 1rem;
 }
 body .info .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 0.5rem;
 }
 body #canvas {

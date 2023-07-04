@@ -19,7 +19,7 @@ class Game {
         this.state = 0;
         this.points = 0;
         this.level = 1;
-        this.speed = 0.5;
+        this.speed = 1;
         this.frame = 0;
         this.newLevelTimer = 3;
         new InputHandler(this);

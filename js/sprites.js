@@ -3,8 +3,8 @@ class FishSprite {
         this.spriteSheet = loadImage(src);
         this.maxFrameX = maxFrameX;
         this.maxFrameY = maxFrameY;
-        this.frameWidth = 418;
-        this.frameHeight = 397;
+        this.frameWidth = 300;
+        this.frameHeight = 200;
         this.frameX = 0;
         this.frameY = 0;
     }

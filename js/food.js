@@ -13,9 +13,9 @@ class Food {
     }
     update(game) {
         if (this.direction == 'h') {
-            this.x += this.speed;
+            this.x += this.speed/4;
         } else if (this.direction == 'v') {
-            this.y += this.speed;
+            this.y += this.speed/4;
         }
 
         /***************************************
